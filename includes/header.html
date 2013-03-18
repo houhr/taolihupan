@@ -1,0 +1,56 @@
+<?php
+ob_start();
+session_name('taolihupan');
+session_start();
+if(!isset($page_title)) {
+	$page_title = '桃李湖畔';
+}
+date_default_timezone_set('Asia/Chongqing');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><?php echo $page_title; ?></title>
+	<link href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan';?>/css/other.css" rel="stylesheet" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="bookmark" href="/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/js/other.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="navi">
+			<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan';?>/"><div id="logo"></div></a>
+			<ul id="links">
+				<li><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/home.php" title="首页">❤ 首页</a></li>
+				<li><a href="../activities/" title="活动">☑ 活动</a></li>
+				<li><a href="../play/" title="玩乐">♞ 玩乐</a></li>
+				<li><a href="../books/" title="书籍">✎ 书籍</a></li>
+				<li><a href="../experience/" title="经验">✈ 经验</a></li>
+				<li><a href="../community/" title="社团">☢ 社团</a></li>
+			</ul>
+		</div>
+		
+		<div id="settings">
+			<span class="floatLeft">欢迎，<?php echo $_SESSION['studentNumber'];?></span>
+			<ul class="floatRight" id="change">
+				<li><a href="student.php?id=<?php echo $_SESSION['studentNumber']?>">我的主页</a></li>
+				<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"id="dropMenu">
+					<a href="#">设置</a>
+					<ul>
+						<li ><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/change_profile.php">个人资料</a></li>
+						<li ><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/change_page.php">个人页面</a></li>
+						<li ><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/change_avatar.php">更改头像</a></li>
+						<li ><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/change_password.php">更改密码</a></li>
+					</ul>
+				</li>
+				<li><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/suggest.php">建议</a></li>
+				<li><a href="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/logout.php">退出</a></li>
+			</ul>
+			<form id="search" action="http://<?php echo $_SERVER['HTTP_HOST'].'/taolihupan'; ?>/search.php" method="post">
+				<input id="search_word" name="search_word" type="text" value="找同学、搜文章" onfocus="clearInput();" onblur="restore();"/>
+				<button type="submit" id="searchButton"></button>
+			</form>
+		</div>

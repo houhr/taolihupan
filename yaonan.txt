@@ -1,0 +1,90 @@
+﻿/*----------------------------------home-----------------------------------------*/
+
+	<div>
+		<h1>最近咬喃</h1>
+		<h2>我最近发布的：</h2>
+		<?php
+		$query = "SELECT * FROM yaonan WHERE via='".$_SESSION['studentNumber']."' ORDER BY date DESC LIMIT 5";
+		$result = mysql_query($query) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+		if (mysql_num_rows($result) != 0) {
+			echo '<table id="yaonan">';
+			while($row = mysql_fetch_array($result)) {
+				$cut = $row['topic'];
+				if (mb_strlen($row['topic'], 'UTF-8') > 20) {
+					$cut = mb_substr($row['topic'], 0, 20, 'UTF-8') . '...';
+				}
+				
+				$insideQuery = "SELECT id FROM yaonan_reply WHERE belong='".$row['id']."'";		//查询每条咬喃的回复数
+				$insideResult = mysql_query($insideQuery) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+				$insideRow = mysql_num_rows($insideResult);
+				
+				$cutDate = mb_substr( $row['date'], 0, 16, 'UTF-8');
+				
+				echo '<tr><td class="title"><a href="./yaonan/?id='.$row['id'].'">'.$cut.'</a></td><td class="reply">'.$insideRow.' 条回复</td><td class="date">'.$cutDate.'</td></tr>';
+				
+			}
+			echo '</table>';
+		} else {
+			echo '<p>你还没有咬喃过，<a href="./yaonan/">快去发一条</a>，告诉大家你来啦~</p>';
+		}
+		
+		echo '<h2>我最近回复的：</h2>';
+		
+		$query1 = "SELECT belong FROM yaonan_reply WHERE via='".$_SESSION['studentNumber']."' ORDER BY date DESC LIMIT 5";
+		$result1 = mysql_query($query1) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+		if (mysql_num_rows($result1) != 0) {
+			
+			while($row1 = mysql_fetch_array($result1)) {
+				
+				$query = "SELECT * FROM yaonan WHERE id='".$row1[0]."' ORDER BY date DESC LIMIT 5";
+				$result = mysql_query($query) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+				if (mysql_num_rows($result) != 0) {
+					echo '<table id="yaonan">';
+					while($row = mysql_fetch_array($result)) {
+						$cut = $row['topic'];
+						if (mb_strlen($row['topic'], 'UTF-8') > 20) {
+							$cut = mb_substr($row['topic'], 0, 20, 'UTF-8') . '...';
+						}
+						
+						$insideQuery = "SELECT id FROM yaonan_reply WHERE belong='".$row['id']."'";		//查询每条咬喃的回复数
+						$insideResult = mysql_query($insideQuery) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+						$insideRow = mysql_num_rows($insideResult);
+						
+						$cutDate = mb_substr( $row['date'], 0, 16, 'UTF-8');
+						
+						echo '<tr><td class="title"><a href="./yaonan/?id='.$row['id'].'">'.$cut.'</a></td><td class="reply">'.$insideRow.' 条回复</td><td class="date">'.$cutDate.'</td></tr>';
+						
+					}
+					echo '</table>';
+				}
+				
+			}
+			
+		} else {
+			echo '<p>你还没有回复过别人的咬喃，<a href="./yaonan/">这就去看一看</a>大家都在说什么吧！</p>';
+		}
+		?>
+	</div>
+	
+/*--------------------------------------student-----------------------*/
+			<div  class="module">
+				<h2><?php if ($self) echo '我'; else echo 'TA';?>的咬喃</h2>
+				<div class="content">
+					<?php
+					
+					$query1 = "SELECT * FROM yaonan WHERE via='".$_GET['id']."' ORDER BY date DESC LIMIT 1";
+					$result1 = mysql_query($query1) or trigger_error("Query: $query \n<br />MySQL Error: " . mysql_error());
+					$row1 = mysql_fetch_array($result1);
+					if (mysql_num_rows($result1) != 0) {
+						echo '<h3>'.$row1['topic'].'</h3>';
+						echo '<p class="date">'.$row1['date'].'</p>';
+						echo '<p>'.$row1['content'].'</p>';
+						echo '<p><a href="../yaonan/?id='.$row1['id'].'">回复&gt;&gt;</a><a href="../yaonan/?uid='.$_GET['id'].'"  class="floatRight">更多咬喃&gt;&gt;</a></p>';
+						
+					} else {
+						echo '<p>主人暂时还没有发布任何咬喃。</p>';
+					}
+					
+					?>
+				</div>
+			</div>

@@ -1,0 +1,27 @@
+*{margin:0;padding:0;list-style:none;outline:none;}
+body{overflow:hidden;background:url("./bj.jpg") repeat-x;color:#333;font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif ;font-size:16px;}
+a, .ps, label{color:#000;margin:10px;font-size:12px;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+.smallLogo{background: transparent url("./a.png") 0 -766px no-repeat;width:175px;height:62px;}
+#login{background:url("./a.png") 0 -576px no-repeat;width:310px;height:150px;margin:10px 0;padding:20px;text-align:center;}
+.input_text{border:1px #ccc solid;width:150px;margin:0 0 10px 0;padding:8px;font-size:18px;font-family: Georgia, "Times New Roman", Times, serif;}
+.input_text:focus{border:1px #000 solid;}
+#register, #main, #about{width:950px;height:560px;margin:80px auto;}
+#balloon{background: transparent url("./a.png") 0 0 no-repeat;width:430px;height:432px;position:relative;top:30px;left:260px;}
+#regForm{width:260px;position:relative;top:-315px;left:370px;}
+#agreement{margin-bottom:10px;}
+#check{position:relative;top:-9px;left:-8px;width:230px;height:42px;text-align:center;font-size:13px;color:#f00;}
+#ok{background: transparent url("./a.png") -606px -484px no-repeat;width:143px;height:89px;position:relative;top:145px;left:37px;border:none;cursor:pointer;}
+#cloud{background:url("./a.png") 0 -432px no-repeat;width:383px;height:83px;position:absolute;top:400px;z-index:-1;}
+#logo{background: transparent url("./a.png") -350px -573px no-repeat;width:350px;height:124px;}
+#content{background-color:#fff;width:570px;border-left:10px #e3e3e3 solid;border-right:10px #e3e3e3 solid;height:345px;}
+#contentRoundUp{width:590px;height:29px;background:url("./a.png") 0 -515px no-repeat;position:relative;left:360px;}
+#contentRoundDown{width:590px;height:29px;background: transparent url("./a.png") 0 -543px no-repeat;position:relative;left:360px;top:345px;}
+.check2{font-size:13px;color:#f00;}
+#go{width:138px;height:35px;}
+#u{background: transparent url("./a.png") -350px -697px no-repeat;width:350px;height:69px;border:none;cursor:pointer;}
+#footer{width:950px;border-top:1px #e3e3e3 dashed;clear:both;position:relative;top:130px;}
+#aboutUs{margin:50px 0 10px;background: transparent url("./a.png") -430px 0 no-repeat;width:412px;height:483px;position:relative;top:50px;left:200px;}
+#up{position:relative;top:-80px;left:518px;}
+#snail{background: transparent url("./a.png") -700px -697px no-repeat;width:100px;height:46px;position:absolute;padding-left:200px;}

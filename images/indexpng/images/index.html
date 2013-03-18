@@ -1,0 +1,89 @@
+<?php
+ob_start();
+session_start();
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>桃李湖畔</title>
+	<link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="./favicon.ico" type="image/x-icon" />
+	<link rel="bookmark" href="./favicon.ico" type="image/x-icon" />
+</head>
+<body>
+		
+	<div id="register">
+		<div class="floatLeft smallLogo"></div>
+		<a href="" class="floatRight" onclick="scrollGoTo(725,0);return false;" onfocus="blur()">登录</a>
+		<a href="" class="floatRight" onclick="scrollGoTo(1370,0);moveSnail();return false;" onfocus="blur()">关于我们</a>
+		<div id="balloon"></div>
+		<form id="regForm" action="" method="post" onsubmit="return check();">
+			<p>学号：<input type="text" name="regStudentNumber" id="regStudentNumber" class="input_text" /></p>
+			<p>邮箱：<input type="text" name="regEmail" id="regEmail" class="input_text" /></p>
+			<p>密码：<input type="password" name="regPassword" id="regPassword" class="input_text" /></p>
+			<p><input type="checkbox" name="agreement" id="agreement" /><label for="agreement">我已认真阅读并同意《<a href="http://taolihupan.com/agreement" target="_blank">使用协议</a>》</label></p>
+			<table id="check">
+				<tr>
+					<td>
+						<span id="noNumber">请填写学号</span>
+						<span id="wrongNumber">学号格式错误</span>
+						<span id="noPassword">请填写密码</span>
+						<span id="noEmail">请填写邮箱</span>
+						<span id="wrongEmail">邮箱格式错误</span>
+						<span id="noAgree">请同意协议</span>
+					</td>
+				</tr>
+			</table>
+			<button type="button" id="ok" onclick="if(check())this.form.submit();" onfocus="blur()" /></button>
+		</form>
+		<div id="cloud">
+		</div>
+	</div>
+
+	<div id="main">
+		<div class="floatLeft">
+			<div id="logo"></div>
+			<form id="login" action="" method="post" onsubmit="return check2();">
+				<p>学 号：<input type="text" id="studentNumber" name="studentNumber" class="input_text" />
+				<a href="http://">无号新生？</a></p>
+				<p>密 码：<input type="password" id="password" name="password" class="input_text" />
+				<a href="http://">忘了密码？</a></p>
+				<span id="noNumber2" class="check2">请填写学号</span>
+				<span id="wrongNumber2" class="check2">学号格式错误</span>
+				<span id="noPassword2" class="check2">请填写密码</span>
+				<input type="checkbox" name="autologin" id="autologin" /><label for="autologin">记住我</label>
+				<p><input type="button" value="登录" id="go" onclick="if(check2()){this.disabled=true; this.form.submit();}" /></p>
+			</form>
+			<button type="button" id="u" onclick="scrollGoTo(65,1);" onfocus="blur()" /></button>
+		</div>
+		<div id="contentRoundUp"></div>
+		<div id="content" class="floatRight">
+			<embed src='' quality='high' width='570' height='345' align='middle' allowScriptAccess='sameDomain' type='application/x-shockwave-flash'></embed>
+		</div>
+		<div id="contentRoundDown"></div>
+		<div id="footer" >
+			<span class="floatLeft ps">&#169;2010 蒙ICP备00000000号</span>
+			<a href="mailto:admin@taolihupan.com" class="floatRight">联系我们</a>
+			<a href="" class="floatRight" onclick="scrollGoTo(1370,0);moveSnail();return false;" onfocus="blur()">关于我们</a>
+		</div>
+	</div>
+
+	<div id="about">
+		<div id="aboutUs">
+		</div>
+		<div id="snail">
+		</div>
+		<div id="up">
+			<div class="smallLogo"></div>
+			<a href=""  onclick="scrollGoTo(705,1);return false;" onfocus="blur()">&#62;&#62; 登录</a>
+			<a href=""  onclick="scrollGoTo(65,1);return false;" onfocus="blur()">&#62;&#62; 立即去注册</a>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="./js.js"></script>
+</body>
+</html>
